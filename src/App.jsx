@@ -10,6 +10,9 @@ import { listTools, listProyek } from "./data";
 import ChromaGrid from "./components/ChromaGrid/ChromaGrid";
 import ProjectModal from "./components/ProjectModal/ProjectModal"; // <-- IMPORT MODAL
 import Aurora from "./components/Aurora/Aurora";
+import Squares from "./components/Squares/Squares";
+import LiquidEther from "./components/LiquidEther/LiquidEther";
+
 import AOS from 'aos';
 import ChatRoom from "./components/ChatRoom";
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -62,13 +65,34 @@ function App() {
 
   return (
     <>
-      <div className="absolute top-0 left-0 w-full h-full -z-10 ">
-        <Aurora
-          colorStops={["#577870", "#1F97A6", "#127B99"]}
-          blend={0.5}
-          amplitude={1.0}
-          speed={0.5}
-        />
+      <div className="fixed top-0 left-0 w-full h-full -z-10 ">
+        {
+          <LiquidEther
+            colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+            mouseForce={20}
+            cursorSize={100}
+            isViscous={false}
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5}
+            isBounce={false}
+            autoDemo={true}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+          />
+
+          // <Squares
+          //   speed={0.5}
+          //   squareSize={40}
+          //   direction='diagonal' // up, down, left, right, diagonal
+          //   borderColor='#fff'
+          //   hoverFillColor='#222'
+          // />
+        }
       </div>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -153,7 +177,7 @@ function App() {
 
             {/* Kolom kanan */}
             <div className="basis-full md:basis-5/12 pl-0 md:pl-8 overflow-hidden max-w-full flex justify-center ">
-              <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+              <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
             </div>
           </div>
 
